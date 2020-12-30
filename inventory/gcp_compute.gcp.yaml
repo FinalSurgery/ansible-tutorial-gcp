@@ -1,0 +1,3 @@
+plugin: google.cloud.gcp_compute
+project:
+  - alextestproject-24113
