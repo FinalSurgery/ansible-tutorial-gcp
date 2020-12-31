@@ -1,0 +1,14 @@
+# this is an example inventory file for  testing purposes. to enable it simply rename it to gcp_compute.gcp.yaml and rename the other file of that name something else.
+# plug in called by ansible
+plugin: google.cloud.gcp_compute            
+# project list, this can include multiple google project as long as the service account key is active and has all the IAM permissions in all the projects
+projects:
+  - alextestproject-242113         
+zones:
+  - us-west1-a 
+hostnames:
+  - name
+# this is how I am authenticating, there are different ways but this is what is most familiar to all of you, it requires  you creating a service account key in API&services
+auth_kind: serviceaccount      
+service_account_file: ~/ansibler-tutorial-gcp/key.json
+

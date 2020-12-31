@@ -14,7 +14,7 @@ variable "project" {
     default = "alextestproject-242113"
 }
 variable "creds" {
-    default = "/home/aduvalcid/ansibler2/key.json"
+    default = "~/ansible-tutorial-gcp/key.json"
 }
 variable "OS" {
     default = "debian-cloud/debian-9"

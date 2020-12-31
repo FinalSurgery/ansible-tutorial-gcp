@@ -9,12 +9,8 @@ zones:
 # Here I include a field called hostnames which changes the identifying factor for the machines from IP to their GCP name
 hostnames:
   - name 
-# below two sections; keyed identifies the group of instances and names it. groups are defined below
 keyed_groups:
   - key: zone
-# groups will take a chracateristic of instances and seperate the instances into groups. this allows an action performed by ansible to affect several
-# instances and choose which ones will be affected dynamically.
-# in this case i am separating instances that contain the ino and lamp in the name into sperate group which the screenshot will demonstrate.
 groups:
   lamp_project: "'ino' in name"
   lamp_server: "'lamp' in name"
