@@ -1,0 +1,67 @@
+
+    - name: Mysql
+      become_user: root
+      apt:
+        name:
+        - mysql-server
+        - mysql-client
+        - python-mysqldb
+        state: latest
+      register: mysqlinstalled
+    
+    - name: db directory maker
+      become_user: root
+      file:
+        path: "{{mysql_mount_path}}"
+        state: directory
+
+    - name: make the partition
+      become_user: root
+      filesystem:
+        fstype: ext4
+        dev: "{{dbdisk}}"
+
+    - name: mount the database
+      become_user: root
+      mount:
+        path: "{{mysql_mount_path}}"
+        src: "{{dbdisk}}"
+        fstype: ext4
+        state: mounted
+
+    - name: init sql
+      become_user: root
+      script: "{{mysql_script_location}}"
+      when: mysqlinstalled.changed
+
+    - name: create cnf
+      become_user: root
+      template:
+        src: "{{mysql_conf_local}}"
+        dest: "{{mysql_conf_file}}"
+        owner: root
+        mode: 0600
+      become: yes
+      when: mysqlinstalled.changed
+
+    - name: copy data
+      shell: "{{item}}"
+      with_items:
+        - "cp -R -p /var/lib/mysql {{mysql_datadir}}"
+      become_user: root
+      when: mysqlinstalled.changed
+
+    - name: replace
+      become_user: root
+      replace:
+        path: /etc/mysql/mariadb.conf.d/50-server.cnf 
+        regexp: '/var/lib/mysql'
+        replace: '{{mysql_datadir}}'
+      when: mysqlinstalled.changed
+
+    - name: restart mysql
+      become_user: root
+      service:
+        name: mysql
+        state: restarted
+      when: mysqlinstalled.changed

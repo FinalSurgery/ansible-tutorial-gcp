@@ -1,0 +1,13 @@
+- hosts: lamp_server
+  gather_facts: false
+  become_user: ansible
+  become: yes
+  vars_files:
+  - ~/ansibler2/group/all 
+  tasks:
+  - name: install apache
+    include: ~/ansibler2/ansible/apache/apache.yaml
+  - name: install php
+    include: ~/ansibler2/ansible/php/php.yaml
+  - name: install mysql and configure it
+    include: ~/ansibler2/ansible/mysql/mysql.yaml

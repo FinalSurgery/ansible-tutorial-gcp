@@ -1,0 +1,22 @@
+
+    - name: Apache
+      become_user: root
+      apt:
+        name: apache2
+        state: latest
+      register: apacheinstalled
+
+    - name: replace
+      become_user: root
+      lineinfile:
+        path: /etc/apache2/mods-enabled/dir.conf
+        regexp: 'DirectoryIndex index.html index.cgi index.pl index.php index.xhtml index.htm'
+        line: '     DirectoryIndex index.php index.cgi index.pl index.html index.xhtml index.htm'
+        state: present
+
+    - name: restart apache
+      become_user: root
+      service:
+        name: apache2
+        state: restarted
+      when: apacheinstalled.changed

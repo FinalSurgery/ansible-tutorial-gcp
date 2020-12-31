@@ -20,4 +20,4 @@ groups:
   lamp_server: "'lamp' in name"
 # this is how I am authenticating, there are different ways but this is what is most familiar to all of you, it requires  you creating a service account key in API&services
 auth_kind: serviceaccount      
-service_account_file: ~/ansibler-tutorial-gcp/key.json
+service_account_file:  /home/aduvalcid/ansibler/ansible-tutorial-gcp/key.json
