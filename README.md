@@ -28,17 +28,18 @@ inventory = <path to the inventory file>
 enable_plugins = host_list, virtualbox, yaml, constructed, gcp_compute
 
 Here is a basic inventory and its output:
-![](images/inventory_all.pngg)
+![](https://github.com/FinalSurgery/ansible-tutorial-gcp/blob/main/images/inventory_all.png)
 
 The inventory below will only list instances in a certain zone:
+![](https://github.com/FinalSurgery/ansible-tutorial-gcp/blob/main/images/inventory_zone.png)
 
 I added the zone parameter, as you can see, now there are only 3 IP’s this means that these 3 IP’s represent machines in those zones.
 Next I will change the inventory so that it identifies instances by their hostnames and not their IP’s
-
+![](https://github.com/FinalSurgery/ansible-tutorial-gcp/blob/main/images/inventory_name.png)
 And the beautiful thing about dynamic inventory is that it’s dynamic, so if I were to add a new instance in us-west1-a then there will be a new instance as shown in the screenshot below.
-
+![](https://github.com/FinalSurgery/ansible-tutorial-gcp/blob/main/images/inventory_name_added_instance.png)
 Lastly, I will demonstrate how to group instances together to perform ansible actions on multiple machines at once:
-
+![](https://github.com/FinalSurgery/ansible-tutorial-gcp/blob/main/images/inventory_keyed_groups.png)
 
 If you look above I have created 2 groups; lamp servers and lamp projects. With these two groups I can direct an action performed by ansible to any of these groups and the actions performed will be performed in all instances in the group.
 
