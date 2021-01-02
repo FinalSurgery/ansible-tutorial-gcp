@@ -14,7 +14,7 @@ Simply create an SSH key on your host machine and add the public key to the proj
 You also need to install the latest version of ansible, the easiest way I found to do so is to (use the PIP method in ansible install playbook)[https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-ansible-with-pip]t. It installs globally the latest version every time. I’ve had issues with the apt method.
 
 ## What is an inventory?
-Ansible manages machines it has authority over using something called an inventory.( as shown below) the inventory is a file, written in yaml that defines how the machines are defined and coordinated. As an example, below I have an inventory file, that’s a learning project I created configuring and installing a LAMP server in ansible. There is a groups section this defines my lamp server from my testing client. 
+Ansible manages machines, it has authority over using something called an inventory.(as shown below) the inventory is a file, written in yaml that defines how the machines are defined and coordinated. As an example, below I have an inventory file, that’s a learning project I created configuring and installing a LAMP server in ansible. There is a groups section this defines my lamp server from my testing client. 
 
 Below I am going to show a GCP dynamic inventory which is what I use because of its scalability and automation
 
@@ -28,6 +28,7 @@ inventory = <path to the inventory file>
 enable_plugins = host_list, virtualbox, yaml, constructed, gcp_compute
 
 Here is a basic inventory and its output:
+![](images/inventory_all.pngg)
 
 The inventory below will only list instances in a certain zone:
 
