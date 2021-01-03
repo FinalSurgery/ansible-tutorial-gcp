@@ -44,7 +44,7 @@ And the beautiful thing about dynamic inventory is that it’s dynamic, so if I 
 Lastly, I will demonstrate how to group instances together to perform ansible actions on multiple machines at once:
 ![](https://github.com/FinalSurgery/ansible-tutorial-gcp/blob/main/images/inventory_keyed_groups.png)
 
-If you look above I have created 2 groups; lamp servers and lamp projects. With these two groups I can direct an action performed by ansible to any of these groups and the actions performed will be performed in all instances in the group.
+If you look above I have created 2 groups; LAMP servers and LAMP projects. With these two groups I can direct an action performed by ansible to any of these groups and the actions performed will be performed in all instances in the group.
 
 ## The playbook.
 
@@ -54,11 +54,16 @@ here is an example of the equivalent of using apt-get install apache2, making th
 
 ![](https://github.com/FinalSurgery/ansible-tutorial-gcp/blob/main/images/ansible_playbook_example.png)
 
-this is a farely easy example of a configuration. I have included an example of installing and configuring a lamp server and a server client for testing. in order to set up and run the example you should refer to Dany's terraform tutorial to deploy the instances in your project or simply create two instances that match the names in the screenshots above.
-
-
-
+this is a farely easy example of a configuration. I have included an example of installing and configuring a LAMP server and a server client for testing. in order to set up and run the example you should refer to Dany's terraform tutorial to deploy the instances in your project or simply create two instances that match the names in the screenshots above.
 
 ## Paybook in general
 
 The easiest way to create a playbook is to lookup a quickstart guide and write out all the steps in YAML. Ansible will then perform every step in that playbook one at the time and on multiple machines. You can then add your own configurations depending on your needs.
+
+## Why Ansible instead of Terraform
+
+While both Ansible and Terraform can perform the same actions they have one difference that makes Terraform good for deploying large scale infrastructure and Ansible for OS and application configurations.
+
+### stateless vs stateful
+
+Ansible is stateless vs Terraform which is stateful, Terraform is keeps a meticulous record of every action performed called a .tfstate file, this allows. Ansible on the contrary will check everytime a playbook is ran to make sure that that action is not performed already, if an action is not performed the action will then be performed. This is also known as the declarative vs procedural.
