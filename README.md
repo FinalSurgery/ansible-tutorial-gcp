@@ -1,17 +1,16 @@
 # ansible-tutorial-gcp
-## ANSIBLE
 
 ## What is ansible?
 
 Ansible is a configuration automation platform that is easy to use and makes initialization and configuration of machines simple, replicable and scalable.
 
 ## How it works?
-Ansible in essence SSH’s into your machines and performs changes to the os configuration as defined by your ansible playbook written in YAML.
+Ansible in essence SSH’s into your machines and performs changes to the os configuration as defined by your ansible playbook written in YAML. This is also known as agentless, meaning there is nothing to install on the target machines.
 
 ## How to set it up?
 Just like terraform, you need to create service account credentials though your UI and download the JSON key to your directory. if you want to follow along with this tutorial rename the key to key.json
 
-You also need to install the latest version of ansible, the easiest way I found to do so is to [use the PIP method in ansible install playbook](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-ansible-with-pip). It installs globally the latest version every time. I’ve had issues with the apt method. For me it installed a very old version causing some issues with the newer features.
+You also need to install the latest version of ansible, the easiest way I found to do so is to [use the PIP method in ansible install playbook](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-ansible-with-pip). It installs globally the latest version every time. I’ve had issues with the apt method. For me it installed a very old version causing some issues with the newer features. You may have noticed from the PIP installation that Ansible is a product created in python, this also means that you can add to it in python by creating your own modules.
 
 ## What is an inventory?
 Ansible manages machines, to manage the machines you need to identify them and group them so that actions can be performed on a large scale. This is done through an inventory, for the majority of ansible inventories are static, GCP and other clouds provide configurations for how to create a dynamic inventory. A dynamic inventory adds and substracts machines depending on their availbility. In this example I create two VM's in terraform and classify them in an inventory, the playbook is then ran which installs a LAMP stack on one machine and installs mysql client on another to test the connectivity of the LAMP stack and the existance of the database on the separate hard drive.
@@ -56,14 +55,14 @@ here is an example of the equivalent of using apt-get install apache2, making th
 
 this is a farely easy example of a configuration. I have included an example of installing and configuring a LAMP server and a server client for testing. in order to set up and run the example you should refer to Dany's terraform tutorial to deploy the instances in your project or simply create two instances that match the names in the screenshots above.
 
-## Paybook in general
+## Playbooks in general
 
 The easiest way to create a playbook is to lookup a quickstart guide and write out all the steps in YAML. Ansible will then perform every step in that playbook one at the time and on multiple machines. You can then add your own configurations depending on your needs.
 
 ## Why Ansible instead of Terraform
 
-While both Ansible and Terraform can perform the same actions they have one difference that makes Terraform good for deploying large scale infrastructure and Ansible for OS and application configurations.
+While both Ansible and Terraform can perform the same actions they have one difference that makes Terraform good for deploying large scale infrastructure and Ansible for OS and application configurations. One is declarative one is procedural, or stateful and stateless.
 
-### stateless vs stateful
+### Stateless vs Stateful
 
 Ansible is stateless vs Terraform which is stateful, Terraform is keeps a meticulous record of every action performed called a .tfstate file, this allows. Ansible on the contrary will check everytime a playbook is ran to make sure that that action is not performed already, if an action is not performed the action will then be performed. This is also known as the declarative vs procedural.
