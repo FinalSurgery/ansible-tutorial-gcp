@@ -9,7 +9,7 @@ Ansible is a configuration automation platform that is easy to use and makes ini
 Ansible in essence SSH’s into your machines and performs changes to the os configuration as defined by your ansible playbook written in YAML.
 
 ## How to set it up?
-Simply create an SSH key on your host machine and add the public key to the project wide metadata. 
+Just like terraform, you need to create service account credentials though your UI and download the JSON key to your directory. if you want to follow along with this tutorial rename the key to key.json
 
 You also need to install the latest version of ansible, the easiest way I found to do so is to [use the PIP method in ansible install playbook](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-ansible-with-pip). It installs globally the latest version every time. I’ve had issues with the apt method. For me it installed a very old version causing some issues with the newer features.
 
