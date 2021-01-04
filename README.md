@@ -22,10 +22,13 @@ In order to configure the dynamic inventory you need to go and modify the /etc/a
 ## configurations for GCP dynamic inventory.
 Modify the lines
 
-Under defaults ([defaults])
+
+Under defaults ([defaults]) in the /etc/ansible/ansible.cfg
 Add the lines:
+```
 inventory = <path to the inventory file>
 enable_plugins = host_list, virtualbox, yaml, constructed, gcp_compute
+```
 
 ## inventory step by step configuration.
 
