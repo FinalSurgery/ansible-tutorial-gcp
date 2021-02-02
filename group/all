@@ -1,0 +1,17 @@
+gcp_cred_file: /home/aduvalcid/ansiblers2/key.json
+gcp_project: alextestproject-242113
+gcp_cred_kind: serviceaccount
+scopes: https://www.googleapis.com/auth/compute
+zone: us-west1-a
+region: us-west1
+
+mysql_port: 3306
+mysql_bind_address: 127.0.0.1
+mysql_conf_local: ~/ansibler2/group/.my.cnf.j2
+mysql_conf_file: /etc/my.cnf
+mysql_mount_path: /mnt/sqldb
+mysql_datadir: /mnt/sqldb/mysql
+mysql_pid_file: /var/run/mysqld/mysqld.pid
+mysql_root_passwd: password
+mysql_script_location: ~/ansibler2/group/sql_init.sh
+dbdisk: /dev/sdb
